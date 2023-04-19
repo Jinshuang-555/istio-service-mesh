@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: k8s-csye6225jinshuang-me-tls
+  namespace: istio-system
+spec:
+  secretName: k8s-csye6225jinshuang-me-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+  - istio.k8s.csye6225jinshuang.me

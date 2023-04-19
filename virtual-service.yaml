@@ -1,0 +1,27 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: virtual-service
+  namespace: istio-system
+spec:
+  hosts:
+  - "istio.k8s.csye6225jinshuang.me"
+  gateways:
+  - myapp-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /api/v1
+    route:
+    - destination:
+        host: app1-appchart.default.svc.cluster.local
+        port:
+          number: 8081
+  # - match:
+  #   - uri:
+  #       prefix: /api/v1/search
+  #   route:
+  #   - destination:
+  #       host: app1-appchart
+  #       port:
+  #         number: 8082

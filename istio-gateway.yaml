@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: myapp-gateway
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    hosts:
+    - "istio.k8s.csye6225jinshuang.me"
+    tls:
+      mode: SIMPLE
+      credentialName: k8s-csye6225jinshuang-me-tls
